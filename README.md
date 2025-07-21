@@ -170,7 +170,7 @@ def process_kk(file_path):
 kk-extractor-api/
 ├── kode.js
 ├── README.md
-└── LICENSE
+└── API_DOCUMENTATION.md
 ```
 
 ## 🔧 Configuration
