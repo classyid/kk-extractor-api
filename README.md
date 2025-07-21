@@ -47,7 +47,7 @@ curl -X POST "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec" \
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/yourusername/kk-extractor-api.git
+git clone https://github.com/classyid/kk-extractor-api.git
 cd kk-extractor-api
 ```
 
@@ -113,7 +113,7 @@ action=docs
       "raw": "...",
       "parsed": {
         "status": "success",
-        "nomor_kk": "3571021511100006",
+        "nomor_kk": "45410215111004546",
         "kepala_keluarga": { ... },
         "anggota_keluarga": [ ... ]
       }
@@ -168,17 +168,7 @@ def process_kk(file_path):
 
 ```
 kk-extractor-api/
-├── src/
-│   └── main.js              # Google Apps Script code
-├── docs/
-│   ├── API_DOCUMENTATION.md # Dokumentasi lengkap API
-│   └── SETUP_GUIDE.md       # Panduan setup detail
-├── examples/
-│   ├── javascript/          # Contoh implementasi JS
-│   ├── python/             # Contoh implementasi Python
-│   └── php/                # Contoh implementasi PHP
-├── tests/
-│   └── sample-kk/          # Sample Kartu Keluarga untuk testing
+├── kode.js
 ├── README.md
 └── LICENSE
 ```
@@ -247,61 +237,11 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Jika Anda mengalami masalah atau memiliki pertanyaan:
 
-- 📧 Email: your.email@domain.com
-- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/kk-extractor-api/discussions)
-- 🐛 Bug Reports: [GitHub Issues](https://github.com/yourusername/kk-extractor-api/issues)
+- 📧 Email: kontak@classy.id
 
 ---
 
 <div align="center">
   <sub>Built with ❤️ for Indonesia's digital transformation</sub>
 </div>
-```
-
-## Struktur Folder Recommended
-
-```
-kk-extractor-api/
-├── .github/
-│   ├── workflows/
-│   │   └── ci.yml
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.md
-│   │   └── feature_request.md
-│   └── PULL_REQUEST_TEMPLATE.md
-├── src/
-│   ├── main.js              # Main Google Apps Script code
-│   ├── config.js            # Configuration file
-│   └── utils.js             # Utility functions
-├── docs/
-│   ├── API_DOCUMENTATION.md
-│   ├── SETUP_GUIDE.md
-│   ├── DEPLOYMENT.md
-│   └── TROUBLESHOOTING.md
-├── examples/
-│   ├── javascript/
-│   │   ├── basic-usage.html
-│   │   └── advanced-usage.js
-│   ├── python/
-│   │   ├── basic_example.py
-│   │   └── batch_processing.py
-│   └── php/
-│       └── example.php
-├── tests/
-│   ├── sample-kk/
-│   │   ├── valid-kk-1.jpg
-│   │   ├── valid-kk-2.jpg
-│   │   └── invalid-document.jpg
-│   └── test-cases.md
-├── assets/
-│   ├── images/
-│   │   ├── logo.png
-│   │   ├── demo.gif
-│   │   └── architecture.png
-│   └── diagrams/
-├── .gitignore
-├── LICENSE
-├── README.md
-├── CHANGELOG.md
-└── CONTRIBUTING.md
 ```
