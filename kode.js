@@ -9,7 +9,7 @@ const ANGGOTA_SHEET_NAME = 'anggota_keluarga';
 const FOLDER_ID = '<FOLDER-ID>';
 
 // Prompt template untuk parsing Kartu Keluarga
-const PROMPT_TEMPLATE = ``;
+const PROMPT_TEMPLATE = `<prompt bisa dicheckout di https://lynk.id/classyid>`;
 
 /**
  * Handle GET requests - Return API status
