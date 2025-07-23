@@ -181,14 +181,14 @@ function processKKAPI(data) {
 }
 
 /**
- * Return API documentation in JSON format
+ * Return API documentation in JSON format with dummy data
  */
 function getApiDocumentation() {
   const docs = {
     api_name: "API Ekstraksi Data KK",
     version: "1.0.0",
     description: "API untuk menganalisis dan mengekstrak data dari Kartu Keluarga (KK) Indonesia menggunakan Gemini AI",
-    base_url: ScriptApp.getService().getUrl(),
+    base_url: "https://script.google.com/macros/s/AKfycbxxxxxxxxxxxxxxxxxxxxxxx/exec",
     endpoints: [
       {
         path: "/",
@@ -330,20 +330,313 @@ function getApiDocumentation() {
       }
     ],
     examples: {
-      "process-kk": {
+      "process-kk-keluarga-besar": {
         request: {
           method: "POST",
-          url: ScriptApp.getService().getUrl(),
+          url: "https://script.google.com/macros/s/AKfycbxxxxxxxxxxxxxxxxxxxxxxx/exec",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded"
           },
-          body: "action=process-kk&fileData=base64_encoded_kk_image&fileName=kk.jpg&mimeType=image/jpeg"
-        },        
+          body: "action=process-kk&fileData=base64_encoded_kk_image&fileName=kk_keluarga_besar.jpg&mimeType=image/jpeg"
+        },
+        response: {
+          status: "success",
+          code: 200,
+          data: {
+            original: {
+              fileUrl: "https://drive.google.com/file/d/1ABCdef123456789/view",
+              fileName: "kk_keluarga_besar.jpg",
+              mimeType: "image/jpeg"
+            },
+            analysis: {
+              raw: "NOMOR KK: 3273051708150002\nKODE KELUARGA: 3273050892\n\nKEPALA KELUARGA:\nNama: BUDI SANTOSO\nNIK: 3273051708740001\nAlamat: JL. MERDEKA TIMUR NO. 45\nRT/RW: 007/003\nDesa/Kelurahan: CIPINANG\nKecamatan: PULOGADUNG\nKabupaten/Kota: JAKARTA TIMUR\nKode Pos: 13240\nProvinsi: DKI JAKARTA\n\nANGGOTA KELUARGA:\n1. Nama: BUDI SANTOSO\n   NIK: 3273051708740001\n   Jenis Kelamin: LAKI-LAKI\n   Tempat Lahir: JAKARTA\n   Tanggal Lahir: 17-08-1974\n   Agama: ISLAM\n   Pendidikan: S1\n   Pekerjaan: PEGAWAI NEGERI SIPIL\n\n2. Nama: SITI AMINAH\n   NIK: 3273054502780002\n   Jenis Kelamin: PEREMPUAN\n   Tempat Lahir: BANDUNG\n   Tanggal Lahir: 05-02-1978\n   Agama: ISLAM\n   Pendidikan: D3\n   Pekerjaan: GURU\n\n3. Nama: AHMAD RIZKI SANTOSO\n   NIK: 3273052801020001\n   Jenis Kelamin: LAKI-LAKI\n   Tempat Lahir: JAKARTA\n   Tanggal Lahir: 28-01-2002\n   Agama: ISLAM\n   Pendidikan: SMA/SEDERAJAT\n   Pekerjaan: PELAJAR/MAHASISWA\n\n4. Nama: PUTRI AYU SANTOSO\n   NIK: 3273051506050001\n   Jenis Kelamin: PEREMPUAN\n   Tempat Lahir: JAKARTA\n   Tanggal Lahir: 15-06-2005\n   Agama: ISLAM\n   Pendidikan: SMP/SEDERAJAT\n   Pekerjaan: PELAJAR/MAHASISWA\n\n5. Nama: MUHAMMAD FAJAR SANTOSO\n   NIK: 3273052209080001\n   Jenis Kelamin: LAKI-LAKI\n   Tempat Lahir: JAKARTA\n   Tanggal Lahir: 22-09-2008\n   Agama: ISLAM\n   Pendidikan: SD/SEDERAJAT\n   Pekerjaan: PELAJAR/MAHASISWA\n\nSTATUS PERNIKAHAN DAN HUBUNGAN:\n1. Nama: BUDI SANTOSO\n   Status Pernikahan: KAWIN\n   Hubungan Dalam Keluarga: KEPALA KELUARGA\n   Kewarganegaraan: WNI\n\n2. Nama: SITI AMINAH\n   Status Pernikahan: KAWIN\n   Hubungan Dalam Keluarga: ISTRI\n   Kewarganegaraan: WNI\n\n3. Nama: AHMAD RIZKI SANTOSO\n   Status Pernikahan: BELUM KAWIN\n   Hubungan Dalam Keluarga: ANAK\n   Kewarganegaraan: WNI\n\n4. Nama: PUTRI AYU SANTOSO\n   Status Pernikahan: BELUM KAWIN\n   Hubungan Dalam Keluarga: ANAK\n   Kewarganegaraan: WNI\n\n5. Nama: MUHAMMAD FAJAR SANTOSO\n   Status Pernikahan: BELUM KAWIN\n   Hubungan Dalam Keluarga: ANAK\n   Kewarganegaraan: WNI\n\nORANG TUA:\n1. Nama: BUDI SANTOSO\n   Ayah: SUTRISNO\n   Ibu: SARI WULANDARI\n\n2. Nama: SITI AMINAH\n   Ayah: AHMAD YUSUF\n   Ibu: FATIMAH\n\n3. Nama: AHMAD RIZKI SANTOSO\n   Ayah: BUDI SANTOSO\n   Ibu: SITI AMINAH\n\n4. Nama: PUTRI AYU SANTOSO\n   Ayah: BUDI SANTOSO\n   Ibu: SITI AMINAH\n\n5. Nama: MUHAMMAD FAJAR SANTOSO\n   Ayah: BUDI SANTOSO\n   Ibu: SITI AMINAH\n\nTANGGAL PENERBITAN: 15-03-2020",
+              parsed: {
+                status: "success",
+                nomor_kk: "3273051708150002",
+                kode_keluarga: "3273050892",
+                kepala_keluarga: {
+                  nama: "BUDI SANTOSO",
+                  nik: "3273051708740001",
+                  alamat: "JL. MERDEKA TIMUR NO. 45",
+                  rt_rw: "007/003",
+                  desa_kelurahan: "CIPINANG",
+                  kecamatan: "PULOGADUNG",
+                  kabupaten_kota: "JAKARTA TIMUR",
+                  kode_pos: "13240",
+                  provinsi: "DKI JAKARTA"
+                },
+                anggota_keluarga: [
+                  {
+                    nama: "BUDI SANTOSO",
+                    nik: "3273051708740001",
+                    jenis_kelamin: "LAKI-LAKI",
+                    tempat_lahir: "JAKARTA",
+                    tanggal_lahir: "17-08-1974",
+                    agama: "ISLAM",
+                    pendidikan: "S1",
+                    pekerjaan: "PEGAWAI NEGERI SIPIL"
+                  },
+                  {
+                    nama: "SITI AMINAH",
+                    nik: "3273054502780002",
+                    jenis_kelamin: "PEREMPUAN",
+                    tempat_lahir: "BANDUNG",
+                    tanggal_lahir: "05-02-1978",
+                    agama: "ISLAM",
+                    pendidikan: "D3",
+                    pekerjaan: "GURU"
+                  },
+                  {
+                    nama: "AHMAD RIZKI SANTOSO",
+                    nik: "3273052801020001",
+                    jenis_kelamin: "LAKI-LAKI",
+                    tempat_lahir: "JAKARTA",
+                    tanggal_lahir: "28-01-2002",
+                    agama: "ISLAM",
+                    pendidikan: "SMA/SEDERAJAT",
+                    pekerjaan: "PELAJAR/MAHASISWA"
+                  },
+                  {
+                    nama: "PUTRI AYU SANTOSO",
+                    nik: "3273051506050001",
+                    jenis_kelamin: "PEREMPUAN",
+                    tempat_lahir: "JAKARTA",
+                    tanggal_lahir: "15-06-2005",
+                    agama: "ISLAM",
+                    pendidikan: "SMP/SEDERAJAT",
+                    pekerjaan: "PELAJAR/MAHASISWA"
+                  },
+                  {
+                    nama: "MUHAMMAD FAJAR SANTOSO",
+                    nik: "3273052209080001",
+                    jenis_kelamin: "LAKI-LAKI",
+                    tempat_lahir: "JAKARTA",
+                    tanggal_lahir: "22-09-2008",
+                    agama: "ISLAM",
+                    pendidikan: "SD/SEDERAJAT",
+                    pekerjaan: "PELAJAR/MAHASISWA"
+                  }
+                ],
+                status_hubungan: [
+                  {
+                    nama: "BUDI SANTOSO",
+                    status_pernikahan: "KAWIN",
+                    hubungan_keluarga: "KEPALA KELUARGA",
+                    kewarganegaraan: "WNI"
+                  },
+                  {
+                    nama: "SITI AMINAH",
+                    status_pernikahan: "KAWIN",
+                    hubungan_keluarga: "ISTRI",
+                    kewarganegaraan: "WNI"
+                  },
+                  {
+                    nama: "AHMAD RIZKI SANTOSO",
+                    status_pernikahan: "BELUM KAWIN",
+                    hubungan_keluarga: "ANAK",
+                    kewarganegaraan: "WNI"
+                  },
+                  {
+                    nama: "PUTRI AYU SANTOSO",
+                    status_pernikahan: "BELUM KAWIN",
+                    hubungan_keluarga: "ANAK",
+                    kewarganegaraan: "WNI"
+                  },
+                  {
+                    nama: "MUHAMMAD FAJAR SANTOSO",
+                    status_pernikahan: "BELUM KAWIN",
+                    hubungan_keluarga: "ANAK",
+                    kewarganegaraan: "WNI"
+                  }
+                ],
+                orang_tua: [
+                  {
+                    nama: "BUDI SANTOSO",
+                    ayah: "SUTRISNO",
+                    ibu: "SARI WULANDARI"
+                  },
+                  {
+                    nama: "SITI AMINAH",
+                    ayah: "AHMAD YUSUF",
+                    ibu: "FATIMAH"
+                  },
+                  {
+                    nama: "AHMAD RIZKI SANTOSO",
+                    ayah: "BUDI SANTOSO",
+                    ibu: "SITI AMINAH"
+                  },
+                  {
+                    nama: "PUTRI AYU SANTOSO",
+                    ayah: "BUDI SANTOSO",
+                    ibu: "SITI AMINAH"
+                  },
+                  {
+                    nama: "MUHAMMAD FAJAR SANTOSO",
+                    ayah: "BUDI SANTOSO",
+                    ibu: "SITI AMINAH"
+                  }
+                ],
+                tanggal_penerbitan: "15-03-2020"
               }
             }
           }
         }
+      },
+      "process-kk-keluarga-kecil": {
+        request: {
+          method: "POST",
+          url: "https://script.google.com/macros/s/AKfycbxxxxxxxxxxxxxxxxxxxxxxx/exec",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            action: "process-kk",
+            fileData: "base64_encoded_kk_image_data_here",
+            fileName: "kk_keluarga_kecil.png",
+            mimeType: "image/png"
+          })
+        },
+        response: {
+          status: "success",
+          code: 200,
+          data: {
+            original: {
+              fileUrl: "https://drive.google.com/file/d/1XYZabc987654321/view",
+              fileName: "kk_keluarga_kecil.png",
+              mimeType: "image/png"
+            },
+            analysis: {
+              raw: "NOMOR KK: 6471011234560001\nKODE KELUARGA: 6471015678\n\nKEPALA KELUARGA:\nNama: DEWI SARTIKA\nNIK: 6471012506850003\nAlamat: JL. FLAMBOYAN RAYA NO. 12\nRT/RW: 002/001\nDesa/Kelurahan: SAMARINDA KOTA\nKecamatan: SAMARINDA KOTA\nKabupaten/Kota: SAMARINDA\nKode Pos: 75242\nProvinsi: KALIMANTAN TIMUR\n\nANGGOTA KELUARGA:\n1. Nama: DEWI SARTIKA\n   NIK: 6471012506850003\n   Jenis Kelamin: PEREMPUAN\n   Tempat Lahir: SAMARINDA\n   Tanggal Lahir: 25-06-1985\n   Agama: KRISTEN\n   Pendidikan: S2\n   Pekerjaan: DOSEN\n\n2. Nama: SARAH AMANDA PUTRI\n   NIK: 6471013008120001\n   Jenis Kelamin: PEREMPUAN\n   Tempat Lahir: SAMARINDA\n   Tanggal Lahir: 30-08-2012\n   Agama: KRISTEN\n   Pendidikan: SD/SEDERAJAT\n   Pekerjaan: PELAJAR/MAHASISWA\n\nSTATUS PERNIKAHAN DAN HUBUNGAN:\n1. Nama: DEWI SARTIKA\n   Status Pernikahan: CERAI HIDUP\n   Hubungan Dalam Keluarga: KEPALA KELUARGA\n   Kewarganegaraan: WNI\n\n2. Nama: SARAH AMANDA PUTRI\n   Status Pernikahan: BELUM KAWIN\n   Hubungan Dalam Keluarga: ANAK\n   Kewarganegaraan: WNI\n\nORANG TUA:\n1. Nama: DEWI SARTIKA\n   Ayah: HERMAN SARTIKA\n   Ibu: MARIA ELISABETH\n\n2. Nama: SARAH AMANDA PUTRI\n   Ayah: RICHARD MAHENDRA\n   Ibu: DEWI SARTIKA\n\nTANGGAL PENERBITAN: 08-07-2022",
+              parsed: {
+                status: "success",
+                nomor_kk: "6471011234560001",
+                kode_keluarga: "6471015678",
+                kepala_keluarga: {
+                  nama: "DEWI SARTIKA",
+                  nik: "6471012506850003",
+                  alamat: "JL. FLAMBOYAN RAYA NO. 12",
+                  rt_rw: "002/001",
+                  desa_kelurahan: "SAMARINDA KOTA",
+                  kecamatan: "SAMARINDA KOTA",
+                  kabupaten_kota: "SAMARINDA",
+                  kode_pos: "75242",
+                  provinsi: "KALIMANTAN TIMUR"
+                },
+                anggota_keluarga: [
+                  {
+                    nama: "DEWI SARTIKA",
+                    nik: "6471012506850003",
+                    jenis_kelamin: "PEREMPUAN",
+                    tempat_lahir: "SAMARINDA",
+                    tanggal_lahir: "25-06-1985",
+                    agama: "KRISTEN",
+                    pendidikan: "S2",
+                    pekerjaan: "DOSEN"
+                  },
+                  {
+                    nama: "SARAH AMANDA PUTRI",
+                    nik: "6471013008120001",
+                    jenis_kelamin: "PEREMPUAN",
+                    tempat_lahir: "SAMARINDA",
+                    tanggal_lahir: "30-08-2012",
+                    agama: "KRISTEN",
+                    pendidikan: "SD/SEDERAJAT",
+                    pekerjaan: "PELAJAR/MAHASISWA"
+                  }
+                ],
+                status_hubungan: [
+                  {
+                    nama: "DEWI SARTIKA",
+                    status_pernikahan: "CERAI HIDUP",
+                    hubungan_keluarga: "KEPALA KELUARGA",
+                    kewarganegaraan: "WNI"
+                  },
+                  {
+                    nama: "SARAH AMANDA PUTRI",
+                    status_pernikahan: "BELUM KAWIN",
+                    hubungan_keluarga: "ANAK",
+                    kewarganegaraan: "WNI"
+                  }
+                ],
+                orang_tua: [
+                  {
+                    nama: "DEWI SARTIKA",
+                    ayah: "HERMAN SARTIKA",
+                    ibu: "MARIA ELISABETH"
+                  },
+                  {
+                    nama: "SARAH AMANDA PUTRI",
+                    ayah: "RICHARD MAHENDRA",
+                    ibu: "DEWI SARTIKA"
+                  }
+                ],
+                tanggal_penerbitan: "08-07-2022"
+              }
+            }
+          }
+        }
+      },
+      "process-kk-error-not-kk": {
+        request: {
+          method: "POST",
+          url: "https://script.google.com/macros/s/AKfycbxxxxxxxxxxxxxxxxxxxxxxx/exec",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: "action=process-kk&fileData=base64_encoded_random_image&fileName=landscape.jpg&mimeType=image/jpeg"
+        },
+        response: {
+          status: "success",
+          code: 200,
+          data: {
+            original: {
+              fileUrl: "https://drive.google.com/file/d/1QWErty456789012/view",
+              fileName: "landscape.jpg",
+              mimeType: "image/jpeg"
+            },
+            analysis: {
+              raw: "Gambar ini tampaknya bukan Kartu Keluarga. Gambar menunjukkan pemandangan alam dengan pepohonan dan langit biru. Tidak ditemukan format atau struktur yang sesuai dengan Kartu Keluarga Indonesia.",
+              parsed: {
+                status: "not_kk",
+                message: "Gambar yang diupload bukan Kartu Keluarga"
+              }
+            }
+          }
+        }
+      },
+      "error-bad-request": {
+        request: {
+          method: "POST",
+          url: "https://script.google.com/macros/s/AKfycbxxxxxxxxxxxxxxxxxxxxxxx/exec",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: "action=process-kk&fileName=test.jpg"
+        },
+        response: {
+          status: "error",
+          code: 400,
+          message: "Parameter fileData is required"
+        }
+      },
+      "get-docs": {
+        request: {
+          method: "POST",
+          url: "https://script.google.com/macros/s/AKfycbxxxxxxxxxxxxxxxxxxxxxxx/exec",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: "action=docs"
+        },
+        response: docs
       }
+    },
+    notes: {
+      base64_encoding: "Untuk mengkonversi gambar menjadi base64, Anda dapat menggunakan berbagai tools online atau programming libraries",
+      supported_formats: ["image/jpeg", "image/jpg", "image/png", "image/gif", "image/bmp"],
+      max_file_size: "10MB per file",
+      rate_limit: "100 requests per hour per IP",
+      data_retention: "File disimpan di Google Drive untuk 30 hari kemudian dihapus otomatis"
     }
   };
 
